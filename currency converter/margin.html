@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profit Margin Calculator – Smart-rate</title>
+    <meta name="description" content="Calculate profit margin percentage from revenue and cost in any currency. Enter revenue and cost – instant result.">
+    <link rel="canonical" href="https://www.smart-rate.com/margin.html">
+    <!-- ADSENSE_VERIFICATION_CODE_HERE -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="brand">Smart-rate</div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/currency.html">Currency</a></li>
+                    <li><a href="/about.html">About</a></li>
+                </ul>
+            </nav>
+            <div class="kebab-menu">
+                <button class="kebab-button" aria-label="Menu" id="kebabToggle">&#8942;</button>
+                <div class="dropdown-content" id="kebabDropdown">
+                    <li><a href="/" class="active">Home</a></li>
+                    <a href="/about.html">About</a>
+                    <a href="/privacy.html">Privacy</a>
+                    <a href="/contact.html">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- AD_UNIT_TOP -->
+        <div class="ad-placeholder ad-top">Advertisement (AD_UNIT_TOP)</div>
+
+        <section class="container tool-section">
+            <h1>📊 Profit Margin Calculator</h1>
+            <div class="card calculator">
+                <p>Enter revenue and cost to calculate the profit margin percentage. Choose your currency for input context (result is a percentage).</p>
+                <div class="form-group">
+                    <label for="marginRevenue">Revenue</label>
+                    <input type="number" id="marginRevenue" value="100" step="any">
+                </div>
+                <div class="form-group">
+                    <label for="marginCost">Cost</label>
+                    <input type="number" id="marginCost" value="70" step="any">
+                </div>
+                <div class="form-group">
+                    <label for="currencySelect">Currency</label>
+                    <select id="currencySelect">
+                        <option value="$" selected>USD ($)</option>
+                        <option value="€">EUR (€)</option>
+                        <option value="£">GBP (£)</option>
+                        <option value="¥">JPY (¥)</option>
+                        <option value="A$">AUD (A$)</option>
+                        <option value="C$">CAD (C$)</option>
+                        <option value="CHF">CHF</option>
+                        <option value="¥">CNY (¥)</option>
+                        <option value="₹">INR (₹)</option>
+                        <option value="₦">NGN (₦)</option>
+                        <option value="R">ZAR (R)</option>
+                        <option value="₽">RUB (₽)</option>
+                        <option value="₺">TRY (₺)</option>
+                        <option value="R$">BRL (R$)</option>
+                        <option value="₩">KRW (₩)</option>
+                    </select>
+                </div>
+                <button id="calcMarginBtn" class="btn btn-primary">Calculate</button>
+                <div class="result-area">
+                    <p><strong>Profit margin:</strong> <span id="marginPercent">0.00</span>%</p>
+                </div>
+            </div>
+            <div class="help-text">
+                <h2>How to use</h2>
+                <p>Enter your total revenue and the cost of goods sold. The calculator subtracts cost from revenue, divides by revenue, and multiplies by 100 to give the margin percentage. The currency selector is for reference – the result is a percentage.</p>
+            </div>
+        </section>
+
+        <!-- AD_UNIT_MIDDLE -->
+        <div class="ad-placeholder ad-middle">Advertisement (AD_UNIT_MIDDLE)</div>
+    </main>
+
+    <footer>
+    <div class="container footer-content">
+        <p>&copy; 2025 Smart-rate. For informational purposes only. Not financial advice.</p>
+        <p class="footer-links">
+            <a href="/privacy.html">Privacy Policy</a> | 
+            <a href="/contact.html">Contact Us</a>
+        </p>
+    </div>
+</footer>
+
+    <script src="main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const calcBtn = document.getElementById('calcMarginBtn');
+            if (calcBtn) {
+                calcBtn.addEventListener('click', function() {
+                    const revenue = parseFloat(document.getElementById('marginRevenue').value) || 0;
+                    const cost = parseFloat(document.getElementById('marginCost').value) || 0;
+                    // currency selector is for display context only; margin is percentage
+                    let margin = 0;
+                    if (revenue > 0) {
+                        margin = ((revenue - cost) / revenue) * 100;
+                    }
+                    document.getElementById('marginPercent').textContent = margin.toFixed(2);
+                });
+            }
+        });
+    </script>
+    <!-- AD_UNIT_BOTTOM -->
+    <div class="ad-placeholder ad-bottom">Advertisement (AD_UNIT_BOTTOM)</div>
+</body>
+</html>

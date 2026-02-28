@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter with Live Rates & Caching – Smart-rate</title>
+    <meta name="description" content="Free currency converter using multiple APIs. Live rates, 10‑minute cache, fallback support, and status indicator. Works offline with last known rate.">
+    <link rel="canonical" href="https://www.smart-rate.com/currency.html">
+    <meta property="og:title" content="Currency Converter – Smart-rate">
+    <meta property="og:description" content="Live exchange rates with caching and fallback. Reliable and private.">
+    <!-- ADSENSE_VERIFICATION_CODE_HERE -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
+    <script>
+        window.FAILURE_WEBHOOK_URL = ''; // optional
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="brand">Smart-rate</div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/currency.html" class="active">Currency</a></li>
+                    <li><a href="/about.html">About</a></li>
+                </ul>
+            </nav>
+            <div class="kebab-menu">
+                <button class="kebab-button" aria-label="Menu" id="kebabToggle">&#8942;</button>
+                <div class="dropdown-content" id="kebabDropdown">
+                    <li><a href="/" class="active">Home</a></li>
+                    <a href="/about.html">About</a>
+                    <a href="/privacy.html">Privacy</a>
+                    <a href="/contact.html">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- AD_UNIT_TOP -->
+        <div class="ad-placeholder ad-top">Advertisement (AD_UNIT_TOP)</div>
+
+        <section class="container tool-section">
+            <h1>💱 Currency Converter</h1>
+            <div class="card">
+                <p>Get live exchange rates from multiple free APIs. Rates are cached for 10 minutes – if all APIs fail, the last known rate is shown.</p>
+                <div class="converter-form">
+                    <div class="form-group">
+                        <label for="amount">Amount</label>
+                        <input type="number" id="amount" value="1" min="0" step="any">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fromCurrency">From</label>
+                          <select id="fromCurrency">
+    <option value="USD" selected>USD – US Dollar</option>
+    <option value="EUR">EUR – Euro</option>
+    <option value="GBP">GBP – British Pound</option>
+    <option value="JPY">JPY – Japanese Yen</option>
+     <option value="NGN">NGN – Nigerian Naira</option>
+    <option value="AUD">AUD – Australian Dollar</option>
+    <option value="CAD">CAD – Canadian Dollar</option>
+    <option value="CHF">CHF – Swiss Franc</option>
+    <option value="CNY">CNY – Chinese Yuan</option>
+    <option value="HKD">HKD – Hong Kong Dollar</option>
+    <option value="NZD">NZD – New Zealand Dollar</option>
+    <option value="SEK">SEK – Swedish Krona</option>
+    <option value="KRW">KRW – South Korean Won</option>
+    <option value="SGD">SGD – Singapore Dollar</option>
+    <option value="NOK">NOK – Norwegian Krone</option>
+    <option value="MXN">MXN – Mexican Peso</option>
+    <option value="INR">INR – Indian Rupee</option>
+    <option value="RUB">RUB – Russian Ruble</option>
+    <option value="ZAR">ZAR – South African Rand</option>
+    <option value="TRY">TRY – Turkish Lira</option>
+    <option value="BRL">BRL – Brazilian Real</option>
+    <option value="TWD">TWD – Taiwan Dollar</option>
+    <option value="DKK">DKK – Danish Krone</option>
+    <option value="PLN">PLN – Polish Złoty</option>
+    <option value="THB">THB – Thai Baht</option>
+    <option value="IDR">IDR – Indonesian Rupiah</option>
+    <option value="HUF">HUF – Hungarian Forint</option>
+    <option value="CZK">CZK – Czech Koruna</option>
+    <option value="ILS">ILS – Israeli Shekel</option>
+    <option value="CLP">CLP – Chilean Peso</option>
+    <option value="PHP">PHP – Philippine Peso</option>
+    <option value="AED">AED – UAE Dirham</option>
+    <option value="COP">COP – Colombian Peso</option>
+    <option value="SAR">SAR – Saudi Riyal</option>
+    <option value="MYR">MYR – Malaysian Ringgit</option>
+    <option value="RON">RON – Romanian Leu</option>
+    <option value="VND">VND – Vietnamese Đồng</option>
+    <option value="NGN">NGN – Nigerian Naira</option>
+    <option value="PKR">PKR – Pakistani Rupee</option>
+    <option value="EGP">EGP – Egyptian Pound</option>
+    <option value="KES">KES – Kenyan Shilling</option>
+    <option value="GHS">GHS – Ghanaian Cedi</option>
+    <option value="JOD">JOD – Jordanian Dinar</option>
+    <option value="KWD">KWD – Kuwaiti Dinar</option>
+    <option value="BHD">BHD – Bahraini Dinar</option>
+    <option value="LKR">LKR – Sri Lankan Rupee</option>
+    <option value="MMK">MMK – Myanmar Kyat</option>
+    <option value="NPR">NPR – Nepalese Rupee</option>
+    <option value="BDT">BDT – Bangladeshi Taka</option>
+    <option value="UAH">UAH – Ukrainian Hryvnia</option>
+    <option value="RSD">RSD – Serbian Dinar</option>
+    <option value="HRK">HRK – Croatian Kuna</option>
+    <option value="BGN">BGN – Bulgarian Lev</option>
+    <option value="ISK">ISK – Icelandic Króna</option>
+</select>
+                    </div>
+                    <div class="form-group">
+                        <label for="toCurrency">To</label>
+                       <select id="toCurrency">
+    <option value="USD">USD – US Dollar</option>
+    <option value="EUR" selected>EUR – Euro</option>
+    <option value="GBP">GBP – British Pound</option>
+    <option value="JPY">JPY – Japanese Yen</option>
+    <option value="AUD">AUD – Australian Dollar</option>
+    <option value="CAD">CAD – Canadian Dollar</option>
+    <option value="CHF">CHF – Swiss Franc</option>
+    <option value="CNY">CNY – Chinese Yuan</option>
+    <option value="HKD">HKD – Hong Kong Dollar</option>
+    <option value="NZD">NZD – New Zealand Dollar</option>
+    <option value="SEK">SEK – Swedish Krona</option>
+    <option value="KRW">KRW – South Korean Won</option>
+    <option value="SGD">SGD – Singapore Dollar</option>
+    <option value="NOK">NOK – Norwegian Krone</option>
+    <option value="MXN">MXN – Mexican Peso</option>
+    <option value="INR">INR – Indian Rupee</option>
+    <option value="RUB">RUB – Russian Ruble</option>
+    <option value="ZAR">ZAR – South African Rand</option>
+    <option value="TRY">TRY – Turkish Lira</option>
+    <option value="BRL">BRL – Brazilian Real</option>
+    <option value="TWD">TWD – Taiwan Dollar</option>
+    <option value="DKK">DKK – Danish Krone</option>
+    <option value="PLN">PLN – Polish Złoty</option>
+    <option value="THB">THB – Thai Baht</option>
+    <option value="IDR">IDR – Indonesian Rupiah</option>
+    <option value="HUF">HUF – Hungarian Forint</option>
+    <option value="CZK">CZK – Czech Koruna</option>
+    <option value="ILS">ILS – Israeli Shekel</option>
+    <option value="CLP">CLP – Chilean Peso</option>
+    <option value="PHP">PHP – Philippine Peso</option>
+    <option value="AED">AED – UAE Dirham</option>
+    <option value="COP">COP – Colombian Peso</option>
+    <option value="SAR">SAR – Saudi Riyal</option>
+    <option value="MYR">MYR – Malaysian Ringgit</option>
+    <option value="RON">RON – Romanian Leu</option>
+    <option value="VND">VND – Vietnamese Đồng</option>
+    <option value="NGN">NGN – Nigerian Naira</option>
+    <option value="PKR">PKR – Pakistani Rupee</option>
+    <option value="EGP">EGP – Egyptian Pound</option>
+    <option value="KES">KES – Kenyan Shilling</option>
+    <option value="GHS">GHS – Ghanaian Cedi</option>
+    <option value="JOD">JOD – Jordanian Dinar</option>
+    <option value="KWD">KWD – Kuwaiti Dinar</option>
+    <option value="BHD">BHD – Bahraini Dinar</option>
+    <option value="LKR">LKR – Sri Lankan Rupee</option>
+    <option value="MMK">MMK – Myanmar Kyat</option>
+    <option value="NPR">NPR – Nepalese Rupee</option>
+    <option value="BDT">BDT – Bangladeshi Taka</option>
+    <option value="UAH">UAH – Ukrainian Hryvnia</option>
+    <option value="RSD">RSD – Serbian Dinar</option>
+    <option value="HRK">HRK – Croatian Kuna</option>
+    <option value="BGN">BGN – Bulgarian Lev</option>
+    <option value="ISK">ISK – Icelandic Króna</option>
+    <option value="NGN">NGN – Nigerian Naira</option>
+</select>
+                        </div>
+                    </div>
+                    <button id="convertBtn" class="btn btn-primary">Convert</button>
+                    <button id="retryBtn" class="btn btn-secondary">Retry</button>
+                </div>
+                <div class="result-area">
+                    <p><strong>Result:</strong> <span id="conversionResult">—</span></p>
+                    <p><strong>Status:</strong> <span id="apiStatus" class="status-indicator">Idle</span></p>
+                    <p id="cacheMessage" class="info-message"></p>
+                </div>
+            </div>
+            <div class="help-text">
+                <h2>How it works</h2>
+                <p>We first check your browser's cache (10‑minute TTL). If fresh, we use that rate. Otherwise we try the primary API (<code>exchangerate.host</code>). If it fails, we fall back to <code>frankfurter.app</code> and then <code>open.er-api.com</code>. Exponential backoff (2 retries) is applied. If all APIs fail but a stale cache exists, you'll see the last known rate with a timestamp. No cache? You'll get an offline message with a retry button.</p>
+            </div>
+        </section>
+
+        <!-- AD_UNIT_MIDDLE -->
+        <div class="ad-placeholder ad-middle">Advertisement (AD_UNIT_MIDDLE)</div>
+    </main>
+
+   <footer>
+    <div class="container footer-content">
+        <p>&copy; 2025 Smart-rate. For informational purposes only. Not financial advice.</p>
+        <p class="footer-links">
+            <a href="/privacy.html">Privacy Policy</a> | 
+            <a href="/contact.html">Contact Us</a>
+        </p>
+    </div>
+</footer>
+
+    <script src="main.js"></script>
+    <script src="currency.js"></script>
+    <!-- AD_UNIT_BOTTOM -->
+    <div class="ad-placeholder ad-bottom">Advertisement (AD_UNIT_BOTTOM)</div>
+</body>
+</html>

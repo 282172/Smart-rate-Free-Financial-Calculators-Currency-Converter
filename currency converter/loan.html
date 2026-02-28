@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Interest Calculator – Smart-rate</title>
+    <meta name="description" content="Calculate monthly loan payments and total interest in any currency. Enter principal, annual rate, and years.">
+    <link rel="canonical" href="https://www.smart-rate.com/loan.html">
+    <!-- ADSENSE_VERIFICATION_CODE_HERE -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="brand">Smart-rate</div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/currency.html">Currency</a></li>
+                    <li><a href="/about.html">About</a></li>
+                </ul>
+            </nav>
+            <div class="kebab-menu">
+                <button class="kebab-button" aria-label="Menu" id="kebabToggle">&#8942;</button>
+                <div class="dropdown-content" id="kebabDropdown">
+                    <li><a href="/" class="active">Home</a></li>
+                    <a href="/about.html">About</a>
+                    <a href="/privacy.html">Privacy</a>
+                    <a href="/contact.html">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- AD_UNIT_TOP -->
+        <div class="ad-placeholder ad-top">Advertisement (AD_UNIT_TOP)</div>
+
+        <section class="container tool-section">
+            <h1>🏦 Loan Interest Calculator</h1>
+            <div class="card calculator">
+                <p>Calculate your monthly payment and total paid over the loan term. Choose your currency to see results with the correct symbol.</p>
+                <div class="form-group">
+                    <label for="loanPrincipal">Principal (amount borrowed)</label>
+                    <input type="number" id="loanPrincipal" value="10000" step="any">
+                </div>
+                <div class="form-group">
+                    <label for="loanRate">Annual interest rate (%)</label>
+                    <input type="number" id="loanRate" value="5" step="any">
+                </div>
+                <div class="form-group">
+                    <label for="loanYears">Loan term (years)</label>
+                    <input type="number" id="loanYears" value="5" step="any">
+                </div>
+                <div class="form-group">
+                    <label for="currencySelect">Currency</label>
+                    <select id="currencySelect">
+                        <option value="$" selected>USD ($)</option>
+                        <option value="€">EUR (€)</option>
+                        <option value="£">GBP (£)</option>
+                        <option value="¥">JPY (¥)</option>
+                        <option value="A$">AUD (A$)</option>
+                        <option value="C$">CAD (C$)</option>
+                        <option value="CHF">CHF</option>
+                        <option value="¥">CNY (¥)</option>
+                        <option value="₹">INR (₹)</option>
+                        <option value="₦">NGN (₦)</option>
+                        <option value="R">ZAR (R)</option>
+                        <option value="₽">RUB (₽)</option>
+                        <option value="₺">TRY (₺)</option>
+                        <option value="R$">BRL (R$)</option>
+                        <option value="₩">KRW (₩)</option>
+                    </select>
+                </div>
+                <button id="calcLoanBtn" class="btn btn-primary">Calculate</button>
+                <div class="result-area">
+                    <p><strong>Monthly payment:</strong> <span id="monthlyPayment">0.00</span></p>
+                    <p><strong>Total paid:</strong> <span id="totalPaid">0.00</span></p>
+                </div>
+            </div>
+            <div class="help-text">
+                <h2>How to use</h2>
+                <p>Enter the loan principal (amount borrowed), the annual interest rate, and the loan term in years. The calculator uses the standard amortizing loan formula to determine your fixed monthly payment and the total amount paid over the entire term. Select your preferred currency symbol for display.</p>
+            </div>
+        </section>
+
+        <!-- AD_UNIT_MIDDLE -->
+        <div class="ad-placeholder ad-middle">Advertisement (AD_UNIT_MIDDLE)</div>
+    </main>
+
+   <footer>
+    <div class="container footer-content">
+        <p>&copy; 2025 Smart-rate. For informational purposes only. Not financial advice.</p>
+        <p class="footer-links">
+            <a href="/privacy.html">Privacy Policy</a> | 
+            <a href="/contact.html">Contact Us</a>
+        </p>
+    </div>
+</footer>
+
+    <script src="main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const calcBtn = document.getElementById('calcLoanBtn');
+            if (calcBtn) {
+                calcBtn.addEventListener('click', function() {
+                    const p = parseFloat(document.getElementById('loanPrincipal').value) || 0;
+                    const annualRate = parseFloat(document.getElementById('loanRate').value) || 0;
+                    const years = parseFloat(document.getElementById('loanYears').value) || 0;
+                    const currencySelect = document.getElementById('currencySelect');
+                    const currencySymbol = currencySelect.options[currencySelect.selectedIndex].text.split(' ')[0]; // extracts "$", "€", etc.
+
+                    const monthlyRate = annualRate / 100 / 12;
+                    const months = years * 12;
+
+                    let monthly = 0;
+                    if (monthlyRate === 0) {
+                        monthly = months > 0 ? p / months : 0;
+                    } else {
+                        monthly = p * monthlyRate * Math.pow(1 + monthlyRate, months) / (Math.pow(1 + monthlyRate, months) - 1);
+                    }
+                    const total = monthly * months;
+
+                    document.getElementById('monthlyPayment').textContent = currencySymbol + monthly.toFixed(2);
+                    document.getElementById('totalPaid').textContent = currencySymbol + total.toFixed(2);
+                });
+            }
+        });
+    </script>
+    <!-- AD_UNIT_BOTTOM -->
+    <div class="ad-placeholder ad-bottom">Advertisement (AD_UNIT_BOTTOM)</div>
+</body>
+</html>
